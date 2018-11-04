@@ -30,8 +30,8 @@ class StockFunctions:
                  "换手率,交易状态(1：正常交易 0：停牌),涨跌幅,动态市盈率,市净率,市销率,市现率,是否ST股"
 
         data_list = []
-        # columns = rs.fields
-        columns = labels.split(",")
+        columns = rs.fields
+        # columns = labels.split(",")
         data_list.append(columns)
         while (rs.error_code == '0') & rs.next():
             data_list.append(rs.get_row_data())
@@ -54,8 +54,8 @@ class StockFunctions:
                  "每股股利税前,每股股利税后," \
                  "每股红股,分红送转,每股转增资本"
 
-        columns = labels.split(",")
-        # columns = rs_dividend_2015.fields
+        # columns = labels.split(",")
+        columns = rs_dividend_2015.fields
         rs_list.append(columns)
 
         while (rs_dividend_2015.error_code == '0') & rs_dividend_2015.next():
@@ -82,8 +82,8 @@ class StockFunctions:
         rs_factor = bs.query_adjust_factor(code=stockcode, start_date="2015-01-01", end_date="2017-12-31")
 
         labels = "证券代码,除权除息日期,向前复权因子,向后复权因子,本次复权因子"
-        columns = labels.split(",")
-        # columns = rs_factor.fields
+        # columns = labels.split(",")
+        columns = rs_factor.fields
         rs_list.append(columns)
         while (rs_factor.error_code == '0') & rs_factor.next():
             rs_list.append(rs_factor.get_row_data())
@@ -101,8 +101,8 @@ class StockFunctions:
         labels = "证券代码,公司发布财报的日期,财报统计的季度的最后一天," \
                  "净资产收益率(%),销售净利率(%),销售毛利率(%)," \
                  "净利润(万元),每股收益,主营营业收入(百万元),总股本,流通股本"
-        columns = labels.split(",")
-        # columns = rs_profit.fields
+        # columns = labels.split(",")
+        columns = rs_profit.fields
         profit_list.append(columns)
         while (rs_profit.error_code == '0') & rs_profit.next():
             profit_list.append(rs_profit.get_row_data())
@@ -118,8 +118,8 @@ class StockFunctions:
         labels = "证券代码,公司发布财报的日期," \
                  "财报统计的季度的最后一天,净资产收益率(%),销售净利率(%)," \
                  "销售毛利率(%),净利润(万元),每股收益,主营营业收入(百万元),总股本,流通股本"
-        columns = labels.split(",")
-        # columns = rs_operation.fields
+        # columns = labels.split(",")
+        columns = rs_operation.fields
         operation_list.append(columns)
         while (rs_operation.error_code == '0') & rs_operation.next():
             operation_list.append(rs_operation.get_row_data())
@@ -136,8 +136,8 @@ class StockFunctions:
         labels = "证券代码,公司发布财报的日期,财报统计的季度的最后一天," \
                  "净资产同比增长率,总资产同比增长率,净利润同比增长率,基本每股收益同比增长率,归属母公司股东净利润同比增长率"
 
-        columns = labels.split(",")
-        # columns = rs_growth.fields
+        # columns = labels.split(",")
+        columns = rs_growth.fields
         growth_list.append(columns)
         while (rs_growth.error_code == '0') & rs_growth.next():
             growth_list.append(rs_growth.get_row_data())
@@ -154,8 +154,8 @@ class StockFunctions:
 
         labes = "证券代码,公司发布财报的日期,财报统计的季度的最后一天," \
                 "流动比率,速动比率,现金比率,总负债同比增长率,资产负债率,权益乘数"
-        columns = labes.split(",")
-        # columns = rs_balance.fields
+        # columns = labes.split(",")
+        columns = rs_balance.fields
         balance_list.append(columns)
         while (rs_balance.error_code == '0') & rs_balance.next():
             balance_list.append(rs_balance.get_row_data())
@@ -173,8 +173,8 @@ class StockFunctions:
                  "流动资产除以总资产,非流动资产除以总资产,有形资产除以总资产," \
                  "已获现金倍数,经营活动产生的现金流量净额除以营业收入," \
                  "经营性现金净流量除以净利润,经营性现金净流量除以营业总收入"
-        columns = labels.split(",")
-        # columns = rs_cash_flow.fields
+        # columns = labels.split(",")
+        columns = rs_cash_flow.fields
         cash_flow_list.append(columns)
         while (rs_cash_flow.error_code == '0') & rs_cash_flow.next():
             cash_flow_list.append(rs_cash_flow.get_row_data())
@@ -198,8 +198,8 @@ class StockFunctions:
                  "净利润/利润总额,利润总额/息税前利润," \
                  "息税前利润/营业总收入"
 
-        columns = labels.split(",")
-        # columns = rs_dupont.fields
+        # columns = labels.split(",")
+        columns = rs_dupont.fields
         dupont_list.append(columns)
         while (rs_dupont.error_code == '0') & rs_dupont.next():
             dupont_list.append(rs_dupont.get_row_data())
@@ -218,8 +218,8 @@ class StockFunctions:
         labels = "证券代码,业绩快报披露日,业绩快报统计日期,业绩快报披露日(最新)," \
                  "业绩快报总资产,业绩快报净资产,业绩每股收益增长率,业绩快报净资产收益率ROE-加权," \
                  "业绩快报每股收益EPS-摊薄,业绩快报营业总收入同比,业绩快报营业利润同比"
-        columns = labels.split(",")
-        # columns = rs.fields
+        # columns = labels.split(",")
+        columns = rs.fields
         result_list.append(columns)
         while (rs.error_code == '0') & rs.next():
             result_list.append(rs.get_row_data())
@@ -240,8 +240,8 @@ class StockFunctions:
                  "业绩预告统计日期,业绩预告类型," \
                  "业绩预告摘要,预告归属于母公司的净利润增长上限(%)," \
                  "预告归属于母公司的净利润增长下限(%)"
-        columns = labels.split(",")
-        # columns = rs_forecast.fields
+        # columns = labels.split(",")
+        columns = rs_forecast.fields
         rs_forecast_list.append(columns)
         while (rs_forecast.error_code == '0') & rs_forecast.next():
             # 分页查询，将每页信息合并在一起
@@ -261,8 +261,8 @@ class StockFunctions:
                  "证券类型1:股票2:指数 3:其它," \
                  "上市状态1:上市0:退市"
 
-        columns = labels.split(",")
-        # columns = rs.fields
+        # columns = labels.split(",")
+        columns = rs.fields
         data_list.append(columns)
         while (rs.error_code == '0') & rs.next():
             # 获取一条记录，将记录合并在一起
