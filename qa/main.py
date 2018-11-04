@@ -7,6 +7,7 @@ from tornado.httpclient import AsyncHTTPClient
 from tornado import gen
 from tornado.websocket import websocket_connect
 import qa.StockFun as stock
+
 class Client(object):
     def __init__(self):
         self.ioloop = IOLoop.instance()
@@ -38,7 +39,6 @@ class Client(object):
 
     @gen.coroutine
     def run(self):
-    
         while True:
             msg = yield self.ws.read_message()
             if msg is None:
@@ -76,6 +76,7 @@ class Client(object):
                                "10：季频杜邦指数\n" \
                                "11：季频业绩快报\n" \
                                "12:季频业绩预告\n" \
+                               "13:查询相关参数" \
                                "请输入选项 + 股票代码\n"
                     finish_text = json.dumps(
                         {"text": raw_text,
@@ -437,9 +438,22 @@ class Client(object):
                          "channel_id": msg.get("channel_id")}
                     )
                     self.ws.write_message(finish_text)
+            elif textArray[0] == "13":
+                if msg.get('refer_key') != '':
+                    raw_text = "https://github.com/gaara2016/bearyBot/blob/master/qa/参数说明文档"
+                    finish_text = json.dumps(
+                        {"text": raw_text,
+                        "vchannel_id": msg.get("vchannel_id"),
+                        "call_id": 23,
+                        "refer_key": '',
+                        "type": "channel_message",
+                        "channel_id": msg.get("channel_id")}
+                    )
+                    self.ws.write_message(finish_text)
+
             else:
                 if msg.get('refer_key') != '':
-                    raw_text = "请输入股票查询"
+                    raw_text = "请输入:股票查询"
                     finish_text = json.dumps(
                         {"text": raw_text,
                         "vchannel_id": msg.get("vchannel_id"),
