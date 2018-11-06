@@ -11,7 +11,7 @@ import qa.StockFun as stock
 class Client(object):
     def __init__(self):
         self.ioloop = IOLoop.instance()
-        self.openapi = openapi.Client("bf8ccfe31798793255856708978b3e3b")
+        self.openapi = openapi.Client("d86934426fecf5cd6bc665ecaec33312")
         self.me = '@<=' + self.openapi.user.me()['id'] + '=>'
         self.ws = None
         self.connect()
@@ -23,7 +23,7 @@ class Client(object):
         print("1")
         print("trying to connect")
         try:
-            post_data = {'token': "bf8ccfe31798793255856708978b3e3b"}
+            post_data = {'token': "d86934426fecf5cd6bc665ecaec33312"}
             get_url = yield AsyncHTTPClient().fetch("https://rtm.bearychat.com/start", method="POST",
                                                     body=parse.urlencode(post_data), connect_timeout=5, request_timeout=5)
             url = json.loads(get_url.body.decode()).get('result', {}).get('ws_host')
